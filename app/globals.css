@@ -1,0 +1,414 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF9F7;  /* Cream - your brand color */
+  --foreground: #2F2A24;  /* Dark brown - your brand text */
+  --brand-brown: #B5A491;
+  --brand-cream: #FAF9F7;
+  --brand-dark: #3e2f1c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand-brown);
+}
+
+/* Light mode (default) */
+:root {
+  --background: #FAF9F7;
+  --foreground: #2F2A24;
+}
+
+/* Dark mode - preserving your brand colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --foreground: #e5e5e5;
+  }
+}
+
+/* Force dark mode class (if you use class toggling) */
+.dark {
+  --background: #1a1a1a;
+  --foreground: #e5e5e5;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ========== YOUR BRAND COLOR OVERRIDES ========== */
+
+/* Keep brand brown in both modes */
+.bg-brand {
+  background-color: #B5A491;
+}
+
+.text-brand {
+  color: #B5A491;
+}
+
+.border-brand {
+  border-color: #B5A491;
+}
+
+/* Dark mode specific overrides - brand colors remain */
+.dark .bg-white {
+  background-color: #2a2a2a !important;
+}
+
+.dark .border-gray-100 {
+  border-color: #404040 !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #404040 !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #2a2a2a !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #333333 !important;
+}
+
+.dark .text-gray-600 {
+  color: #b0b0b0 !important;
+}
+
+.dark .text-gray-700 {
+  color: #c0c0c0 !important;
+}
+
+.dark .text-gray-800 {
+  color: #d0d0d0 !important;
+}
+
+.dark .text-gray-900 {
+  color: #ffffff !important;
+}
+
+/* Input fields in dark mode */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+  border-color: #555555 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #888888 !important;
+}
+
+.dark input:focus,
+.dark textarea:focus {
+  border-color: #B5A491 !important;
+  outline: none !important;
+}
+
+/* Cards and containers in dark mode */
+.dark .shadow-lg,
+.dark .shadow-md,
+.dark .shadow-sm {
+  --tw-shadow-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Keep brand button colors */
+.dark button.bg-\[\#B5A491\] {
+  background-color: #B5A491 !important;
+}
+
+.dark button.bg-\[\#B5A491\]:hover {
+  background-color: #9e8a74 !important;
+}
+
+/* Modal backgrounds in dark mode */
+.dark .fixed.bg-white,
+.dark .bg-white {
+  background-color: #2a2a2a !important;
+}
+
+/* Keep document preview background in dark mode */
+.dark .bg-\[\#fffdf9\] {
+  background-color: #2a2a2a !important;
+}
+
+.dark .bg-\[\#f5efe6\] {
+  background-color: #1a1a1a !important;
+}
+
+/* Document text in dark mode */
+.dark .text-\[\#2f2a24\] {
+  color: #e0e0e0 !important;
+}
+
+.dark .text-\[\#3e2f1c\] {
+  color: #B5A491 !important;
+}
+
+.dark .border-\[\#e8dccb\] {
+  border-color: #444444 !important;
+}
+
+.dark .border-\[\#d6c7b0\] {
+  border-color: #555555 !important;
+}
+
+/* Sidebar and navigation */
+.dark .bg-\[\#F9FAFB\] {
+  background-color: #2a2a2a !important;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  background-color: #3a3a3a !important;
+}
+
+/* Scrollbar styling (optional - looks premium) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8e0d5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B5A491;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9e8a74;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #B5A491;
+}
+
+/* Selection color */
+::selection {
+  background-color: #B5A491;
+  color: #ffffff;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Print styles - preserve brand colors */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .print-document {
+    box-shadow: none;
+    border: none;
+  }
+  
+  .page-break {
+    page-break-before: always;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  p, div {
+    page-break-inside: avoid;
+  }
+
+
+  /* ========== OVERLAY SPINNER ANIMATIONS ========== */
+
+/* Bouncing dots animation */
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 0.8s ease-in-out infinite;
+}
+
+/* Pulse animation for text */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Fade in animation for overlay */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+.fixed.inset-0 {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Spin animation (if needed elsewhere) */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 0.8s linear infinite;
+}
+/* ========== BOUNCE ANIMATION FOR DOTS ========== */
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 0.8s ease-in-out infinite;
+}
+
+/* ========== PULSE ANIMATION FOR TEXT ========== */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ========== FADE IN FOR OVERLAY ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(4px);
+  }
+}
+
+.fixed.inset-0 {
+  animation: fadeIn 0.2s ease-out;
+}
+}
+.page-break {
+  break-before: page;
+  page-break-before: always;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
+
+
+/* Print styles for PDF export */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+  
+  .print-document {
+    margin: 0;
+    padding: 0.5in;
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  /* Keep signatures together */
+  .signature-wrapper {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  
+  /* Avoid breaking headings */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  
+  /* Avoid breaking paragraphs */
+  p {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
